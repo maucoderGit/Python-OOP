@@ -56,3 +56,6 @@ class Hotel:
 hotel = Hotel(50, 20)
 print(hotel.parking) # 20
 ```
+
+### Métodos de instancia:
+
