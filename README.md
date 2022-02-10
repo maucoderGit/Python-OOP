@@ -84,7 +84,21 @@ class Hotel:
     hotel.add_coustomer(3)
     hotel.checkout(1)
     hotel.total_ocupated() # 2
-```
+```   
 
-### Abstract Datatype and Class, Instances: 
+### Abstract Datatype and Class, Instances:
 
+1. Abstract Datatype: en programación conocemos a estos tipos de datos que tu creas cómo tipo de "Dato Abstracto".
+
+- Como ya sabes de cursos pasados, todo dentro de Python es un objeto, y tiene un tipo.
+    - Representación de datos y maneras de interactuar con ellos.
+
+- Tenemos tres formas de interactuar con un objeto:
+    - Creación.
+    - Manipulación.
+    - Destrucción.
+
+- Ventajas:
+    - Decomposición.
+    - Abstracción, recordemos que abstraer se refiere a usar código que no necesariamente debemos entender como funciona en sí, sino que solo requerimos los resúltados.
+    - Encapsulación.
