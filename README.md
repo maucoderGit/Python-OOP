@@ -59,3 +59,32 @@ print(hotel.parking) # 20
 
 ### Métodos de instancia:
 
+A diferencia de los atributos, que son quienes se encargan de describir dicho objeto en nuestro programa, los métodos, es el uso y que nos permite hacer con dichas instancias.
+
+De manera más simple, los métodos son las funciones de dicha clase, pero recibe como primer argumento la palabra reservada: 
+
+```py
+self
+```
+
+```py
+class Hotel:
+
+    ```
+    def add_coustomer(self, coustomer_recived):
+        self.coustomer = coustomer_recived
+    
+    def checkout(self, coustomer_recived):
+        self.coustomer = coustomer_recived
+    
+    def total_ocupated(self):
+        return self.coustomer
+
+    hotel = Hotel(50, 20)
+    hotel.add_coustomer(3)
+    hotel.checkout(1)
+    hotel.total_ocupated() # 2
+```
+
+### Abstract Datatype and Class, Instances: 
+
