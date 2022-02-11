@@ -102,3 +102,73 @@ class Hotel:
     - Decomposición.
     - Abstracción, recordemos que abstraer se refiere a usar código que no necesariamente debemos entender como funciona en sí, sino que solo requerimos los resúltados.
     - Encapsulación.
+
+```py
+# Definición de una ckase
+
+class <Class_Name>(<Super_Class>)
+    # Create constructor method
+    def __init__(self, <params>):
+        <expretion>
+
+    def <method_name>(self, <params>):
+        <expretion>
+        
+```
+
+```py
+# Def
+
+class Person:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greatings(self, other_person):
+        return f'Hola {other_person.name}, me llamo {self.name}'
+
+# use
+
+david = Person("David", 16)
+erika = Person("Erika", 24)
+
+david.greatigns(erika) # Hola Erika me llamo David
+```
+
+Como puedes ver, las clases nos sirven cómo un tipo de molde el cual rellenaremos con datos, que en este caso son el nombre y la edad de las personas.
+
+2. Instancies: A los objetos, los conocemos como instancias.
+
+- Mientras que la clase es un molde, a los objetos creados les conocemos como instancias.
+    - Podemos tener instancias diferentes pero el molde(nuestra clase), seguira siendo el mismo.
+
+- Cuando se crea una instancia, se ejecuta el método __init__.
+
+- Todos los métos de una clase reciben implícitamente como primer parámetro "self".
+
+- Los atributos de clase nos permiten:
+    - Representar los datos.
+    - Procedimientos para interactuar con los mismos.
+    - Mecanismos para esconder la representación interna. La **convención** dentro de Python dice que, para declarar una variable como privada debe empezar con un underscore y luego el nombre del método o de la variable.
+
+```py
+    class Coordenada:
+
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+        def distance(self, otra_coordenada):
+            x_diff = (self.x - otra_cordenada.x)**2
+            y_diff = (self.y - otra_cordenada.y)**2
+
+            return(x_diff + y_diff) ** 0.5
+
+if __name__ == "__main__":
+    coord_1 = Coordenada(3, 30)
+    coord_2 = Coordenada(4, 8)
+
+    print(coord_1.distance(coord_2))
+    print(isintance(coord_2, Coordenada))
+```
