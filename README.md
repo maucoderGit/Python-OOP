@@ -185,6 +185,7 @@ Una computadora es  un buen ejemplo, ya que esta formado de muchísimas piezas, 
 Evitando códigos de muchas líneas de código, los cuales suelen tener gran dificultad para entenderlos. Y además estos componentes trabajaran en conjunto para que nuestro programa funcione.
 
 Como podemos ver en el archivo "Descomposicion.py", nuestro código realmente no tiene ningún uso. También notaras que nuestro código se divide en más de una clase, que juntas permiten existir a nuestro automovil.
+
 Además del motor(que es la única clase existente por momento), nuestro automóvil podría contener una clase Asientos, entre muchas otras que conformen al auto pero no esten estríctamente relacionadas.
 
 ### Abstracción: 
@@ -192,4 +193,8 @@ Además del motor(que es la única clase existente por momento), nuestro automó
 Es enfocarse en la información relevante.
 
 - Separar información central de detalles secundarios.
-- Podemos utilizar variables y métodos(privados y públicos)
+- Podemos utilizar variables y métodos(privados y públicos).
+
+Para traer este concepto a la programación, debemos generar una **interfaz**, con la cual interactuaremos directamente con las clases.
+
+Veamos como podemos esconder algunas implementaciones, y como exponer métodos que nos permiten interactuar directamente con nuestras clases.
