@@ -1,0 +1,16 @@
+from character import Character
+
+class Anime:
+    _id: int
+    name: str
+    characters: object = Character(int ,str, int)
+    soundtrack: str
+    category: str
+    rating: int
+
+    def __init__(self, _id, name : str, soundtrack: str, category:str, rating: int):
+        self._id = _id
+        self.name = name
+        self.soundtrack = soundtrack
+        self.category = category
+        self.rating = rating
