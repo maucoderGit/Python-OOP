@@ -6,6 +6,7 @@ class Character:
     phrase: str
     anime: str
     status: str
+    score: int
 
     def __init__(self,_id: int, name:str, age:int, anime:str, status: str):
         self._id = _id
@@ -14,8 +15,11 @@ class Character:
         self.anime: str = anime
         self.status: str = status
 
-    def add_phrase(self):
-        self.phrase = str(input("Character Iconic phrase: "))
-    
+    def add_phrase(self, phrase):
+        self.phrase = phrase
+
+    def valoration(self, score):
+        self.score = score
+
     def sumarry_character(self):
         return f'Name: {self.name}, from: {self.anime}, Age: {self.age}, Phrase: {self.phrase or ""}'
