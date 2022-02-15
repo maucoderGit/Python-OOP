@@ -13,3 +13,6 @@ class Anime:
         self.name = name
         self.category = category
         self.score = score
+
+    def show_data(self):
+        return (f'Name: {self.name}, Category: {self.category}, Score: {self.score}')

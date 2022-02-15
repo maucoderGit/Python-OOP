@@ -8,12 +8,16 @@ def run():
     Anime_1: object = Anime(1, "Steis;Gate", "Seinen", 10)
 
     Character_2: object =  Character(2, "Kamina", 16, "Tengenn toppa Gurren lagann", "Live")
-    Anime_2: object = Anime(2, "Tengenn toppa Gurren lagann", "Mecha", 10)
+    Anime_2: object = Anime(2, "Tengenn toppa Gurren lagann", "Mecha", 9)
+
+    Character_3: object = Character(3, "Monkey D. Luffy", 19, "God Piece", "live")
+    Anime_3: object = Anime(3, "God Piece", "Shonen", 8)
 
     new_list = List("My_anime_list", "Maucoder")
-    new_list.add_anime(Anime_2)
 
-    new_list.add_anime(Anime_1)
+    new_list.add_anime(Anime_3)
+    new_list.add_anime(Anime_2)
+    # new_list.add_anime(Anime_1)
 
     new_list.show_my_anime_list()
     # ranking(Anime_2)
