@@ -19,14 +19,14 @@ def run():
 
     new_list = List("My_anime_list", "Maucoder")
 
-    new_list.add_anime(Anime_4)
-    new_list.add_anime(Anime_2)
-    new_list.add_anime(Anime_1)
-    new_list.add_anime(Anime_3)
-    new_list.add_anime(Anime_5)
-    new_list.add_anime(Anime_1)
+    new_list.add_element(Anime_4)
+    new_list.add_element(Anime_2)
+    new_list.add_element(Anime_1)
+    new_list.add_element(Anime_3)
+    new_list.add_element(Anime_5)
+    new_list.add_element(Anime_1)
 
-    new_list.show_my_anime_list()
+    new_list.show_my_list()
 
 if __name__ == "__main__":
     run()
