@@ -15,56 +15,22 @@ class List():
 
     def add_anime(self, anime: object):
         self.anime = anime
-        self._long = len(self.user_list)
 
-        try:
-            if self._long == 0:
-                self.user_list.append(self.anime)
-            else:
-                self.user_list.append(self.anime)
-                # self._ranking(self.user_list[self._count])
-                self._sort_list(self._long)
-        except IndexError as error:
-            print(error)
+        self.user_list.append(self.anime)
+        self._sort_list()
 
-    def _sort_list(self, iterations):
-        self._count = 0
-        iterations -= 1
-        counter: int = self._long
-        
-        try:
-            while counter > 0:
-              
-                iterator_1 = self.user_list[self._count]
-                iterator_2 = self.user_list[self._count + 1]
-    
-                if iterator_1.score > iterator_2.score:
-                    self.user_list[self._count] = iterator_1
-                else:
-                    self.user_list[self._count] = iterator_2
-                    self.user_list[self._count + 1] = iterator_1
+    def _sort_list(self):
+        swapped = True
 
-                self._count += 1
+        while swapped:
+            swapped = False
+            for i in range(len(self.user_list) - 1):
+                if self.user_list[i + 1].score > self.user_list[i].score:
+                    swapped = True
+                    self.user_list[i], self.user_list[i + 1] = self.user_list[i + 1], self.user_list[i]
             
-        except IndexError as error:
-            if iterations > 0:
-                return(self._sort_list(iterations))
-
-            
-    # def _set_position(self):
-    #     if self.user_list[self._position] == self.anime:
-    #         return True
-    #     else:
-    #         return False
-
     def show_my_anime_list(self):
         counter = 1
         for i in self.user_list:
             print(f'{counter}.{i.show_data()}')
             counter += 1
-
-    def _lenght_validator(self):
-        if self._long >= self._count + 1:
-            return True
-        else:
-            return False
