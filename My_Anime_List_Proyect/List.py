@@ -13,65 +13,72 @@ class List():
         self.list_name:str = list_name
         self.user:str = user
 
-
     def add_anime(self, anime: object):
         self.anime = anime
-        print(self.anime)
-        self._count = 0
-
+        self._long = len(self.user_list)
         # binary search Idea
-        # self.counter = int(len(self.user_list) / 2)
+        # self.counter = int(self._long / 2)
         try:
-            if len(self.user_list) == 0:
+            if self._long == 0:
                 self.user_list.append(self.anime)
             else:
-                self.user_list[self._count] = self._ranking(self.user_list[self._count])
-        except IndexError:
-
+                self.user_list.append(self.anime)
+                # self._ranking(self.user_list[self._count])
+                self._sort_list(self._long)
+        except IndexError as error:
+            print(error)
+        
             # add self.anime to last position in array
-            self.user_list.append(self.anime)
-            self._sort_list()
 
-    def _ranking(self, other_rank_score:int):
-        if self.anime.score < other_rank_score.score:
-            self._count += 1
-            self._ranking(self.user_list[self._count])
-        else:
-            self.user_list[self._count + 1] = other_rank_score
-            self._count += 1
+    # def _ranking(self, other_rank_score:int) -> bool:
+    #     if self.anime.score < other_rank_score.score and self._lenght_validator():
+    #         self._count += 1
+    #         self._ranking(self.user_list[self._count])
+    #     elif self.anime.score > other_rank_score.score:
+    #         return True
+    #     else:
+    #         return False
 
-                # self._ranking(other_rank_score)
-       
-    def _sort_list(self):
+    def _sort_list(self, iterations):
+        self._count = 0
+        iterations -= 1
+        # self._position = self._count
+        counter: int = self._long
+        
         try:
-            iterations: int = len(self.user_list)
-            # self.user_list[self._count]: object = self.anime
-            # self.user_list.append(self.anime)
-            
-            while iterations > 0:
+            while counter > 0:
+              
                 iterator_1 = self.user_list[self._count]
                 iterator_2 = self.user_list[self._count + 1]
+    
+                if iterator_1.score > iterator_2.score:
+                    self.user_list[self._count] = iterator_1
+                    # iterator_1 = iterator_2
+                else:
+                    self.user_list[self._count] = iterator_2
+                    self.user_list[self._count + 1] = iterator_1
 
-                if self._set_position() !=  True:
-                    self.user_list[self._count] = self.anime
-
-                self.user_list[self._count + 1] = iterator_1
-
-                iterations -= 1
                 self._count += 1
-        
-        except IndexError:
-            self._count = 0
-            # self.user_list.append(self.user_list[self._count])
+            
+        except IndexError as error:
+            if iterations > 0:
+                return(self._sort_list(iterations))
 
-    def _set_position(self):
-        if self.user_list[self._count] == self.anime:
-            return True
-        else:
-            return False
+            
+    # def _set_position(self):
+    #     if self.user_list[self._position] == self.anime:
+    #         return True
+    #     else:
+    #         return False
 
     def show_my_anime_list(self):
         counter = 1
         for i in self.user_list:
             print(f'{counter}.{i.show_data()}')
             counter += 1
+
+    def _lenght_validator(self):
+        if self._long >= self._count + 1:
+            return True
+        else:
+            return False
