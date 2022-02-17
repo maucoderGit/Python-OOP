@@ -4,7 +4,6 @@ class Anime:
     _id: int
     name: str
     characters: object = Character(int ,str, int, str, str)
-    soundtrack: str
     category: str
     score: int
 
