@@ -16,8 +16,7 @@ class List():
     def add_anime(self, anime: object):
         self.anime = anime
         self._long = len(self.user_list)
-        # binary search Idea
-        # self.counter = int(self._long / 2)
+
         try:
             if self._long == 0:
                 self.user_list.append(self.anime)
@@ -27,22 +26,10 @@ class List():
                 self._sort_list(self._long)
         except IndexError as error:
             print(error)
-        
-            # add self.anime to last position in array
-
-    # def _ranking(self, other_rank_score:int) -> bool:
-    #     if self.anime.score < other_rank_score.score and self._lenght_validator():
-    #         self._count += 1
-    #         self._ranking(self.user_list[self._count])
-    #     elif self.anime.score > other_rank_score.score:
-    #         return True
-    #     else:
-    #         return False
 
     def _sort_list(self, iterations):
         self._count = 0
         iterations -= 1
-        # self._position = self._count
         counter: int = self._long
         
         try:
@@ -53,7 +40,6 @@ class List():
     
                 if iterator_1.score > iterator_2.score:
                     self.user_list[self._count] = iterator_1
-                    # iterator_1 = iterator_2
                 else:
                     self.user_list[self._count] = iterator_2
                     self.user_list[self._count + 1] = iterator_1
