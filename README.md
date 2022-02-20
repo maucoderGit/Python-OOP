@@ -198,3 +198,153 @@ Es enfocarse en la información relevante.
 Para traer este concepto a la programación, debemos generar una **interfaz**, con la cual interactuaremos directamente con las clases.
 
 Veamos como podemos esconder algunas implementaciones, y como exponer métodos que nos permiten interactuar directamente con nuestras clases.
+
+### Funciones decoradas.
+
+Las funciones decoradas son funciones a las que les añadimos funcionalidades adicionales sin afectar a la función original.
+
+Para eso necesitamos una función de orden superior y entender que son los objetos de primera clase. Conceptos que aprendímos en el curso de Pensamiento computacional con Python.
+
+Para crear una función decorada necesitas una función A, la cual decorará a una función B que le daremos como argumento, y retornaremos una función C, que sera la función B ya decorada.
+
+
+```py
+def funcion_decoradora(funcion):
+
+def wrapper():
+    print("Este es el último mensaje...")
+    funcion()
+    print("Este es el primer mensaje ;)")
+return wrapper
+
+def dormir():
+	print("*empieza a ver una piece*")
+
+dormir = funcion_decoradora(dormir) 
+
+>>> "Este es el último mensaje..."
+>>> "Empiezo a ver One piece"
+>>> "Este es el primer mensaje"
+```
+
+A esto se le conoce en programación como metaprogramación(*metaprogramming*), porque una parte del programa trata de modifcar otra durante el tiempo de ejecución.
+
+#### Esto parece complejo...
+
+Y si, es una sintaxis poco pythonica, además de ser algo compleja, pero afortunadamente Python tiene en cuenta este problema y podemos usar los decoradores con el simbolo @.
+
+```
+    @funcion_decoradora
+    def dormir():
+        print("Empiezo a ver One Piece")
+```
+
+### ¿Y los *getters* y *setters*?
+
+Los getters and setters, en otros lenguajes de programación son utilizados para obtener el valor de un atributo(getters) y también de fijar un valor en el(setters).
+
+En Python, a diferencia del resto(siempre nuestro Python destacando), no podemos generar realmente variables privadas. Si, aunque las declaremos con guión bajo(_) al principio, se sigué podiendo acceder a ellas.
+
+En Python los getters and setters tienen el objetivo de asegurar el encapsulamiento(encargarse de que los datos de un objeto solo puedan cambiarse y definirse mediante los métodos que posee el mismo objeto.) de datos.
+
+```py
+    # Código del maestro David Aroesti.
+
+    class User:
+
+        def __init__(self, username, _password):
+            self.username = username
+            self._password = password
+
+    # Creamos el objeto
+
+    user = User("Mau", "MiContraseñaEsSeguraOjalaNoLaRobenPorUnErrorDeCodigo")
+    
+    print(user.username, user._password) 
+    
+    >>> ("Mau", "MiContraseñaEsSeguraOjalaNoLaRobenPorUnErrorDeCodigo")
+```
+
+Este es un ejemplo del código sin usar Getters and Setters. Puedes ver que a pesar de declarar esta variable como privada igualmente podemos acceder a alla.
+
+#### Función @property
+
+Es una built-in de Python, crea y retorna propiedades de un objeto. La propiedad de un objeto posee los métodos getter(), setter() y del().
+
+En tanto la función tiene cuatro atributos: property(fget, fset, fdel, fdoc) :
+
+- fget : trae el valor de un atributo.
+- fset : define el valor de un atributo.
+- fdel : elimina el valor de un atributo.
+- fdoc : crea un docstring por atributo.
+
+Veamos un ejemplo del mismo caso implementando la función property():
+
+```py
+        class User:
+
+        def __init__(self):
+            self.__password = password
+
+        def get_password(self):
+            return self.__password
+
+        def set_password(self, password):
+            if len(password) < 8:
+                raise ValueError("Tu contraseña debe tener al menos 8 caracteres.")
+            self.__password = password
+        
+        def del_password(self):
+            del password
+
+        password = property(get_password, set_password, del_password)
+```
+
+Ahora creemos el objeto:
+
+```py
+usuario = User()
+
+usuario.__password = str(input("Ingresa una contraseña: "))
+
+>>> MiContraseñaMuySeguraYBonita
+
+print(usuario.__password) # Devuelve un error de sintaxis
+```
+
+#### ¿Y hay algún decorador que haga esto por nosotros?
+
+¡Pues por supuesto que lo hay! El Decorador @property es uno de muchos en Python, este facilita el uso de getters and setters dentro de nuestro código.
+
+Pero veamos esto en código: 
+
+```py
+class User:
+
+    def __init__(self):
+        self.__password = password
+
+    @property
+    def password(self):
+        return self.__password
+
+    # usando el decorador @property
+    
+    @password.setter
+    def password(self, password):
+        if len(password) < 8:
+            raise ValueError("Tu contraseña debe tener al menos 8 caracteres.")
+        self.__password = password
+```
+
+Y como seguro ya has entendido, el resultado será el mismo que en el anterior.
+
+```py
+usuario.password = "MiContraseñaEsMuySegura"
+```
+
+Palabras claves: 
+- Encapsulamiento.
+- Programación defensiva.
+- Python permisivo
+- decoradores
