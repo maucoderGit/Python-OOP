@@ -343,17 +343,94 @@ Y como seguro ya has entendido, el resultado será el mismo que en el anterior.
 usuario.password = "MiContraseñaEsMuySegura"
 ```
 
-Palabras claves: 
-- Encapsulamiento.
-- Programación defensiva.
-- Python permisivo
-- decoradores
+### El encapsulamiento en la programación defensiva:
 
-- Herencia.
-- Reto: Escribir un ejemplo de la vida real donde puedas aplicar la herencia y sea programable.
-- Superclases y subclases
-- compartir comportamientos y atributos
-- Herencia múltiple
-- Polimorfismo.
-- Para que sirve.
-- Ejemplo
+Ya hemos hablado de encapsulamiento aquí, y ya entendímos que debemos establecer métodos para que los atributos de nuestros objetos no sean accecibles ante cualquier desarrollador malintencionado que quiera romper nuestra lógica o un usuario descuidado que se equivoco en la asignación de datos.
+
+**La programación defensiva** va de esto, preveer cada posible situación para que nuestro código no colapse, o en caso de que suceda lo haga con estilo.
+
+Python como bien sabemos es un lenguaje dinámico, en el que no existe un tipado exigente, pero esto tiene consecuencias en la seguridad de nuestros datos y en la lógica de nuestra aplicación.
+
+Los decoradores suelen ser una gran ayuda, porque en caso de que queramos optimizar un código no debemos recaer en la repetición de código, y ayudan a reutilizar lo ya escrito.
+
+### La herencia:
+
+Ya casí estamos tocando fondo en cuanto a POO con Python se trata, pero aún nos quedan dos puntos que tratar. Y uno de ellos es la herencia.
+
+Para entender esto debemos entender que es una superclase y una subclase.
+
+Una superclase es una clase que tiene atributos y métodos que otras clases que reciben estos mismos atributos de ella, evitando repetición de código.
+Y las subclases son clases que reciben atributos y/o métodos de una clase superior.
+
+```py
+class soda:
+
+    def __init__(self, nombre, sabor):
+        self.nombre = nombre
+        self.sabor = sabor
+
+    def sonido_de_soda(self):
+        print(f'pffffffsss')
+
+class Coka_Cola(soda):
+
+    def __init__(self, nombre, sabor):
+        super().__init__(nombre, sabor)
+
+class Pepso(soda):
+
+    def __init__(self, nombre, sabor):
+        super().__init__(nombre, sabor)
+```
+
+Este es un ejemplo de herencia, y podemos verlo más clar de lo que hablamos.
+La clase soda inicializa los atributos y métodos. En cambio la clase Coka_Cola y Pepso, no necesitan hacer esto de nuevo, solo llaman a la función built-in para declarar y luego inicializar dichos atributos.
+
+También puedes ver que al poner el nombre de nuestras nuevas subclases, también encerramos entre parentesis a soda. Esto se debe leer: class a extends b, o en nuestro caso: class Coka_Cola extends soda.
+
+En este caso como heredamos los datos pero no modifican nada se puede escribir en menos líneas de código.
+
+```py
+class Coka_Cola(soda):
+    pass
+
+class Pepso(soda):
+    pass
+```
+
+#### Herencia Múltiple:
+
+Las clases pueden heredar mas de una clase, y se aplica el mismo procedimiento que mostramos antes, solo que añadiremos más de una clase.
+
+### Polimorfismo:
+
+Imagina esto, tienes una Clase Animal y en ella guardas el método hablar().
+
+```py
+class Animal()
+
+    def __init__(self):
+        pass
+
+    def hablar(self)
+        print(f'Soy un animal.')
+```
+
+Y tienes subclases como lo son perro y gato:
+
+```py
+class Perro(Animal):
+
+    def hablar(self):
+        print(f'guau guau')
+
+class Gato(Animal):
+
+    def hablar(self):
+        print(f'miau miau')
+```
+
+Como puedes ver, ambas clases poseen el mismo método hablar, pero no hacen lo mismo.
+De esto se trata el polimorfismo, implica que si en una porción de código se invoca un determinado método de un objeto, podrán obtenerse distintos resultados según la clase del objeto.
+
+Como viste en el ejemplo de arriba, puede parecer poco útil, pero una idea que me viene a la mente es con figuras geométricas, y que podamos calcular el diametro o la altura sin poner mucho ojo a cual sea.
