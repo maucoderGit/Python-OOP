@@ -348,3 +348,12 @@ Palabras claves:
 - Programación defensiva.
 - Python permisivo
 - decoradores
+
+- Herencia.
+- Reto: Escribir un ejemplo de la vida real donde puedas aplicar la herencia y sea programable.
+- Superclases y subclases
+- compartir comportamientos y atributos
+- Herencia múltiple
+- Polimorfismo.
+- Para que sirve.
+- Ejemplo
