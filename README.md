@@ -104,7 +104,7 @@ class Hotel:
     - Encapsulación.
 
 ```py
-# Definición de una ckase
+# Definición de una clase
 
 class <Class_Name>(<Super_Class>)
     # Create constructor method
